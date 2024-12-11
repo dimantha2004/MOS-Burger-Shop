@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOS Burger Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main-content">
+        <div class="login-container">
+            <h1>MOS BURGER</h1>
+            <h2>LOGIN</h2>
+            <form id="login-form" onsubmit="login(event)">
+                <input type="text" id="USERNAME" placeholder="USERNAME" required>
+                <input type="password" id="PASSWORD" placeholder="PASSWORD" required>
+                <button type="submit">SUBMIT</button>
+            </form>
+        </div>
+
+        <div id="app-content" style="display:none;">
+            <header>
+                <h1>MOS Burgers</h1>
+                <nav>
+                    <a href="#burgers">Burgers</a>
+                    <a href="#submarines">Submarines</a>
+                    <a href="#fries">Fries</a>
+                    <a href="#pasta">Pasta</a>
+                    <a href="#chicken">Chicken</a>
+                    <a href="#beverages">Beverages</a>
+                </nav>
+            </header>
+            <main>
+                
+                <section class="explore">
+                    <h3>Explore Our Menu</h3>
+                    <div class="category" id="burgers">
+                        <h4>Burgers</h4>
+                        <div class="products">
+                            <div class="product">
+                                <img src="4.jpg" alt="Classic Burger (Large)">
+                                <h4>Classic Burger (Large)</h4>
+                                <p>Rs:750.00</p>
+                                <button class="order-btn" data-name="Classic Burger (Large)" data-price="750.00">Order</button>
+                            </div>
+                            <div class="product">
+                                <img src="4.jpg" alt="Classic Burger (Regular)">
+                                <h4>Classic Burger (Regular)</h4>
+                                <p>Rs:1500.00</p>
+                                <button class="order-btn" data-name="Classic Burger (Regular)" data-price="1500.00">Order</button>
+                            </div>
+                            <div class="product">
+                                <img src="4.jpg" alt="Turkey Burger">
+                                <h4>Turkey Burger</h4>
+                                <p>Rs:1600.00</p>
+                                <button class="order-btn" data-name="Turkey Burger" data-price="1600.00">Order</button>
+                            </div>
+                            <div class="product">
+                                <img src="4.jpg" alt="Chicken Burger (Large)">
+                                <h4>Chicken Burger (Large)</h4>
+                                <p>Rs:1400.00</p>
+                                <button class="order-btn" data-name="Chicken Burger (Large)" data-price="1400.00">Order</button>
+                            </div>
+                            <div class="products">
+                                <div class="product">
+                                    <img src="4.jpg" alt="Chicken Burger (Regular)">
+                                    <h4>Chicken Burger (Regular)</h4>
+                                    <p>Rs:800.00</p>
+                                    <button class="order-btn" data-name="Chicken Burger (Regular)" data-price="800.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="4.jpg" alt="Cheese Burger (Large)">
+                                    <h4>Cheese Burger (Large)</h4>
+                                    <p>Rs:1000.00</p>
+                                    <button class="order-btn" data-name="Cheese Burger (Large)" data-price="1000.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="4.jpg" alt="Cheese Burger (Regular)">
+                                    <h4>Cheese Burger (Regular)</h4>
+                                    <p>Rs:600.00</p>
+                                    <button class="order-btn" data-name="Cheese Burger (Regular)" data-price="600.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="4.jpg" alt="Bacon Burger">
+                                    <h4>Bacon Burger</h4>
+                                    <p>Rs:650.00</p>
+                                    <button class="order-btn" data-name="Bacon Burger" data-price="650.00">Order</button>
+                                </div>
+                                <div class="products">
+                                    <div class="product">
+                                        <img src="4.jpg" alt="Shawarma Burger">
+                                        <h4>Shawarma Burger</h4>
+                                        <p>Rs:800.00</p>
+                                        <button class="order-btn" data-name="Shawarma Burger" data-price="800.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="4.jpg" alt="Olive Burger">
+                                        <h4>Olive Burger</h4>
+                                        <p>Rs:1800.00</p>
+                                        <button class="order-btn" data-name="Olive Burger" data-price="1800.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="4.jpg" alt="Double-Cheese Burger">
+                                        <h4>Double-Cheese Burger</h4>
+                                        <p>Rs:1250.00</p>
+                                        <button class="order-btn" data-name="Double-Cheese Burger" data-price="1250.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="4.jpg" alt="Crispy Chicken Burger (Regular)">
+                                        <h4>Crispy Chicken Burger (Regular)</h4>
+                                        <p>Rs:1200.00</p>
+                                        <button class="order-btn" data-name="Crispy Chicken Burger (Regular)" data-price="1200.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="4.jpg" alt="Crispy Chicken Burger (Large)">
+                                        <h4>Crispy Chicken Burger (Large)</h4>
+                                        <p>Rs:1600.00</p>
+                                        <button class="order-btn" data-name="Crispy Chicken Burger (Large)" data-price="1600.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="4.jpg" alt="Paneer Burger">
+                                        <h4>Paneer Burger</h4>
+                                        <p>Rs:900.00</p>
+                                        <button class="order-btn" data-name="Paneer Burger" data-price="900.00">Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category" id="submarines">
+                                <h4>Submarines</h4>
+                                <div class="products">
+                                    <div class="product">
+                                        <img src="777.jpg" alt="Crispy Chicken Submarine (Large)">
+                                        <h4>Crispy Chicken Submarine (Large)</h4>
+                                        <p>Rs: 2000.00</p>
+                                        <button class="order-btn" data-name="Crispy Chicken Submarine (Large)" data-price="2000.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="777.jpg" alt="Crispy Chicken Submarine (Regular)">
+                                        <h4>Crispy Chicken Submarine (Regular)</h4>
+                                        <p>Rs: 1500.00</p>
+                                        <button class="order-btn" data-name="Crispy Chicken Submarine (Regular)" data-price="1500.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="777.jpg" alt="Chicken Submarine (Large)">
+                                        <h4>Chicken Submarine (Large)</h4>
+                                        <p>Rs: 1800.00</p>
+                                        <button class="order-btn" data-name="Chicken Submarine (Large)" data-price="1800.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="777.jpg" alt="Chicken Submarine (Regular)">
+                                        <h4>Chicken Submarine (Regular)</h4>
+                                        <p>Rs: 1400.00</p>
+                                        <button class="order-btn" data-name="Chicken Submarine (Regular)" data-price="1400.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="777.jpg" alt="Grinder Submarine">
+                                        <h4>Grinder Submarine</h4>
+                                        <p>Rs: 2300.00</p>
+                                        <button class="order-btn" data-name="Grinder Submarine" data-price="2300.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="777.jpg" alt="Cheese Submarine">
+                                        <h4>Cheese Submarine</h4>
+                                        <p>Rs: 2200.00</p>
+                                        <button class="order-btn" data-name="Cheese Submarine" data-price="2200.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="777.jpg" alt="Double Cheese n Chicken Submarine">
+                                        <h4>Double Cheese n Chicken Submarine</h4>
+                                        <p>Rs: 1900.00</p>
+                                        <button class="order-btn" data-name="Double Cheese n Chicken Submarine" data-price="1900.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="777.jpg" alt="Special Horgie Submarine">
+                                        <h4>Special Horgie Submarine</h4>
+                                        <p>Rs: 2800.00</p>
+                                        <button class="order-btn" data-name="Special Horgie Submarine" data-price="2800.00">Order</button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="777.jpg" alt="MOS Special Submarine">
+                                        <h4>MOS Special Submarine</h4>
+                                        <p>Rs: 3000.00</p>
+                                        <button class="order-btn" data-name="MOS Special Submarine" data-price="3000.00">Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category" id="fries">
+                            <h4>Fries</h4>
+                            <div class="products">
+                                <div class="product">
+                                    <img src="888.jpg" alt="Steak Fries (Large)">
+                                    <h4>Steak Fries (Large)</h4>
+                                    <p>Rs: 1200.00</p>
+                                    <button class="order-btn" data-name="Steak Fries (Large)" data-price="1200.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="888.jpg" alt="Steak Fries (Medium)">
+                                    <h4>Steak Fries (Medium)</h4>
+                                    <p>Rs: 600.00</p>
+                                    <button class="order-btn" data-name="Steak Fries (Medium)" data-price="600.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="888.jpg" alt="French Fries (Large)">
+                                    <h4>French Fries (Large)</h4>
+                                    <p>Rs: 800.00</p>
+                                    <button class="order-btn" data-name="French Fries (Large)" data-price="800.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="888.jpg" alt="French Fries (Medium)">
+                                    <h4>French Fries (Medium)</h4>
+                                    <p>Rs: 650.00</p>
+                                    <button class="order-btn" data-name="French Fries (Medium)" data-price="650.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="888.jpg" alt="French Fries (Small)">
+                                    <h4>French Fries (Small)</h4>
+                                    <p>Rs: 450.00</p>
+                                    <button class="order-btn" data-name="French Fries (Small)" data-price="450.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="888.jpg" alt="Sweet Potato Fries (Large)">
+                                    <h4>Sweet Potato Fries (Large)</h4>
+                                    <p>Rs: 600.00</p>
+                                    <button class="order-btn" data-name="Sweet Potato Fries (Large)" data-price="600.00">Order</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category" id="pasta">
+                            <h4>Pasta</h4>
+                            <div class="products">
+                                <div class="product">
+                                    <img src="pasta.jpg" alt="Chicken n Cheese Pasta">
+                                    <h4>Chicken n Cheese Pasta</h4>
+                                    <p>RS: 1600.00</p>
+                                    <button class="order-btn" data-name="Chicken n Cheese Pasta" data-price="1600.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="pasta.jpg" alt="Chicken Penne Pasta">
+                                    <h4>Chicken Penne Pasta</h4>
+                                    <p>RS: 1700.00</p>
+                                    <button class="order-btn" data-name="Chicken Penne Pasta" data-price="1700.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="pasta.jpg" alt="Ground Turkey Pasta Bake">
+                                    <h4>Ground Turkey Pasta Bake</h4>
+                                    <p>RS: 2900.00</p>
+                                    <button class="order-btn" data-name="Ground Turkey Pasta Bake" data-price="2900.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="pasta.jpg" alt="Creamy Shrimp Pasta">
+                                    <h4>Creamy Shrimp Pasta</h4>
+                                    <p>RS: 2000.00</p>
+                                    <button class="order-btn" data-name="Creamy Shrimp Pasta" data-price="2000.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="pasta.jpg" alt="Lemon Butter Pasta">
+                                    <h4>Lemon Butter Pasta</h4>
+                                    <p>RS: 1950.00</p>
+                                    <button class="order-btn" data-name="Lemon Butter Pasta" data-price="1950.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="pasta.jpg" alt="Tagliatelle Pasta">
+                                    <h4>Tagliatelle Pasta</h4>
+                                    <p>RS: 2400.00</p>
+                                    <button class="order-btn" data-name="Tagliatelle Pasta" data-price="2400.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="pasta.jpg" alt="Baked Ravioli">
+                                    <h4>Baked Ravioli</h4>
+                                    <p>RS: 2000.00</p>
+                                    <button class="order-btn" data-name="Baked Ravioli" data-price="2000.00">Order</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category" id="chicken">
+                            <h4>Chicken</h4>
+                            <div class="products">
+                                <div class="product">
+                                    <img src="chicken.jpg" alt="Fried Chicken (Small)">
+                                    <h4>Fried Chicken (Small)</h4>
+                                    <p>RS: 1200.00</p>
+                                    <button class="order-btn" data-name="Fried Chicken (Small)" data-price="1200.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="chicken.jpg" alt="Fried Chicken (Regular)">
+                                    <h4>Fried Chicken (Regular)</h4>
+                                    <p>RS: 2300.00</p>
+                                    <button class="order-btn" data-name="Fried Chicken (Regular)" data-price="2300.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="chicken.jpg" alt="Fried Chicken (Large)">
+                                    <h4>Fried Chicken (Large)</h4>
+                                    <p>RS: 3100.00</p>
+                                    <button class="order-btn" data-name="Fried Chicken (Large)" data-price="3100.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="chicken.jpg" alt="Hot Wings (Large)">
+                                    <h4>Hot Wings (Large)</h4>
+                                    <p>RS: 2400.00</p>
+                                    <button class="order-btn" data-name="Hot Wings (Large)" data-price="2400.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="chicken.jpg" alt="Devilled Chicken (Large)">
+                                    <h4>Devilled Chicken (Large)</h4>
+                                    <p>RS: 900.00</p>
+                                    <button class="order-btn" data-name="Devilled Chicken (Large)" data-price="900.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="chicken.jpg" alt="BBQ Chicken (Regular)">
+                                    <h4>BBQ Chicken (Regular)</h4>
+                                    <p>RS: 2100.00</p>
+                                    <button class="order-btn" data-name="BBQ Chicken (Regular)" data-price="2100.00">Order</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category" id="beverages">
+                            <h4>Beverages</h4>
+                            <div class="products">
+                                <div class="product">
+                                    <img src="miri.png" alt="Pepsi (330ml)">
+                                    <h4>Pepsi (330ml)</h4>
+                                    <p>RS: 990.00</p>
+                                    <button class="order-btn" data-name="Pepsi (330ml)" data-price="990.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="cocacola-5016273_1280.jpg" alt="Coca-Cola (330ml)">
+                                    <h4>Coca-Cola (330ml)</h4>
+                                    <p>RS: 1230.00</p>
+                                    <button class="order-btn" data-name="Coca-Cola (330ml)" data-price="1230.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="miri.png" alt="Sprite (330ml)">
+                                    <h4>Sprite (330ml)</h4>
+                                    <p>RS: 1500.00</p>
+                                    <button class="order-btn" data-name="Sprite (330ml)" data-price="1500.00">Order</button>
+                                </div>
+                                <div class="product">
+                                    <img src="spritr.webp" alt="Mirinda (330ml)">
+                                    <h4>Mirinda (330ml)</h4>
+                                    <p>RS: 850.00</p>
+                                    <button class="order-btn" data-name="Mirinda (330ml)" data-price="850.00">Order</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                </section>
+
+                <section class="cart">
+                    <h3>Your Cart</h3>
+                    <ul id="cart-items"></ul>
+                    <p id="total">Total: RS: 0</p>
+                    <button id="clear-cart-btn" class="btn btn-warning">Clear Cart</button>
+                    <button id="save-order-btn" class="btn btn-primary">Save Order</button>
+                    <button id="checkout-btn" class="btn btn-success">Checkout</button>
+                    <button id="report-btn" class="btn btn-info">View Orders Report</button>
+                </section>
+                
+            </main>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
