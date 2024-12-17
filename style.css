@@ -1,192 +1,215 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif; 
 }
 
-/* Body Styling */
 body {
-    background-image: url(333.jpg);
+    
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed; 
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
 }
-
-/* Login Container */
+video {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: -1; 
+    opacity: 0.6; 
+}
 .login-container {
+    
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
     width: 100%;
     max-width: 400px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.4);
 }
 
 .login-container h1 {
-    font-size: 2rem;
-    color: #e63946;
+    font-size: 2.5rem;
+    color: #c52152;
     margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
 .login-container h2 {
     font-size: 1.2rem;
-    color: #6c757d;
+    color: #ae10b4;
     margin-bottom: 20px;
 }
 
 .login-container input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.login-container input:focus {
+    border-color: #e63946;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(230, 57, 70, 0.4);
 }
 
 .login-container button {
-    background-color: #e63946;
-    color: #ffffff;
+    background: linear-gradient(to right, #e63946, #ff4e50);
+    color: #fff;
     border: none;
     padding: 10px 15px;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .login-container button:hover {
-    background-color: #d62828;
+    background: linear-gradient(to right, #d62828, #e63946);
+    transform: scale(1.05);
 }
 
-/* App Content */
-#app-content {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Header */
 header {
-    background-color: #a90b67;
+    background: linear-gradient(to right, #a90b67, #e63946);
     color: #000000;
     padding: 15px;
     text-align: center;
     border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
-
-.explore{
-    padding: 20px;
-    text-align: center;
-    color: #f5f5f5;
+header h1 {
+    font-size: 3rem; 
+    font-weight: bold; 
+    color: #ffffff; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    margin: 0;
 }
 
 header nav a {
-    color: #000000;
+    color: #fff;
     margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 header nav a:hover {
-    color: #ffdd57;
+    color: #a11c82;
+    transform: scale(1.1);
 }
-
-/* Hero Section */
 .hero {
     text-align: center;
-    padding: 20px 10px;
-    background-color: #cd2e2e;
+    padding: 40px 20px;
+    background: rgba(126, 32, 32, 0.9);
+    backdrop-filter: blur(5px);
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .hero h2 {
-    color: #000000;
-    font-size: 2.5rem;
+    color: #e63946;
+    font-size: 3rem;
+    letter-spacing: 2px;
 }
 
-/* Category Sections */
 .category {
+    text-align: center;
     margin: 30px 0;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.category:hover {
+    transform: translateY(-10px);
 }
 
 .category h4 {
-    font-size: 1.5rem;
-    color: #ffffff;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     margin-bottom: 15px;
-    
 }
 
 .products {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
 .product {
-    background-color: #f8f9fa;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    padding: 15px;
+    background-color: #000000;
+    border-radius: 50px;
+    overflow: hidden;
+    padding: 5px;
     text-align: center;
-    width: calc(25% - 20px);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .product img {
-    max-width: 100%;
-    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
     margin-bottom: 10px;
 }
 
 .product h4 {
-    font-size: 1.1rem;
-    color: #1d3557;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    color: #ffffff;
 }
 
 .product p {
-    color: #6c757d;
+    color: #ffffff;
     font-size: 1rem;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .order-btn {
-    background-color: #e63946;
-    color: #ffffff;
+    background: linear-gradient(to right, #e63946, #ff6b6b);
+    color: #fff;
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 8px 15px;
+    border-radius: 8px;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .order-btn:hover {
-    background-color: #d62828;
+    background: linear-gradient(to right, #d62828, #e63946);
 }
-
-
-
-
-
-
 
 .modal {
     position: fixed;
@@ -201,8 +224,39 @@ header nav a:hover {
 }
 
 .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
+
+.modal-content button {
+    margin-top: 10px;
+    background-color: #e63946;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #d62828;
+}
+
+#add-new-product-btn {
+    text-align: center;
+    color: #111ac4;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+

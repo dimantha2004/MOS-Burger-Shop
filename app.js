@@ -28,6 +28,8 @@ orderButtons.forEach(button => {
 let cart = [];
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
+//--------------add------------------------------------------
+
 function addToCart(productName, productPrice) {
     const existingItem = cart.find(item => item.name === productName);
     if (existingItem) {
@@ -38,7 +40,7 @@ function addToCart(productName, productPrice) {
     }
     updateCart();
 }
-
+//--------------update----------------------------------
 function updateCart() {
     const cartItemsList = document.getElementById('cart-items');
     const totalElement = document.getElementById('total');
@@ -61,6 +63,8 @@ function updateCart() {
     totalElement.textContent = `Total: RS: ${total.toFixed(2)}`;
 }
 
+//--------------remove----------------------------------
+
 function removeFromCart(index) {
     cart.splice(index, 1);
     updateCart();
@@ -70,6 +74,7 @@ let lastOrderNumber = parseInt(localStorage.getItem('lastOrderNumber')) || 0;
 
 console.log('Initial lastOrderNumber:', lastOrderNumber);  
 
+//--------------save----------------------------------
 function saveOrder() {
     if (cart.length === 0) {
         alert("Your cart is empty");
@@ -100,6 +105,7 @@ function saveOrder() {
     alert(`Order ${orderId} saved successfully!`);
 }
 
+//--------------report----------------------------------
 
 function displayReport() {
     if (orders.length === 0) {
@@ -123,6 +129,8 @@ function displayReport() {
     });
 }
 
+//--------------clear----------------------------------
+
 function clearCart() {
     if (cart.length === 0) {
         alert("Your cart is already empty.");
@@ -133,6 +141,8 @@ function clearCart() {
     updateCart();
     alert("Cart cleared successfully!");
 }
+
+//-------------checkout----------------------------------
 
 function checkout() {
     if (cart.length === 0) {
@@ -186,7 +196,7 @@ function checkout() {
     }
 
     const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
-    const confirmPayment = confirm(`Your total amount is RS: ${totalAmount.toFixed(2)}. Do you wish to proceed to payment?`);
+    const confirmPayment = confirm(`Your total amount is RS: ${totalAmount.toFixed(2)}. Do you wish to do to payment?`);
 
     if (confirmPayment) {
         
@@ -197,9 +207,15 @@ function checkout() {
             alert("Invalid phone number. Please enter a 10-digit phone number.");
             return;
         }
+  
+        lastOrderNumber++;
+    
+        localStorage.setItem('lastOrderNumber', lastOrderNumber);
+
+        const orderId = lastOrderNumber.toString().padStart(4, '0');
 
         const order = {
-            id: (lastOrderNumber + 1).toString().padStart(4, '0'),
+            id: orderId,
             items: cart,
             total: totalAmount,
             timestamp: new Date().toLocaleString(),
@@ -212,12 +228,14 @@ function checkout() {
         cart = [];
         updateCart();
 
-        alert(`Order ${order.id} saved successfully!`);
+        alert(`Order ${orderId} saved successfully!`);
         alert("Payment successful! Thank you for your purchase.");
     } else {
         alert("Payment canceled.");
     }
 }
+
+//--------------report-display----------------------------------
 
 function displayReport() {
     if (orders.length === 0) {
@@ -257,10 +275,24 @@ function displayReport() {
                     font-weight: bold;
                     margin-top: 10px;
                 }
+                .search-section {
+                    text-align: center;
+                    margin: 20px 0;
+                }
+                .search-section input, .search-section button {
+                    padding: 8px;
+                    margin: 5px;
+                    font-size: 16px;
+                }
             </style>
         </head>
         <body>
             <h1>Orders Report</h1>
+            <div class="search-section">
+                <input type="text" id="search-phone-input" placeholder="Enter Phone Number" />
+                <button id="search-phone-btn">Search</button>
+            </div>
+            <div id="orders-container">
     `);
 
     orders.forEach(order => {
@@ -273,17 +305,191 @@ function displayReport() {
                     ${order.items.map(item => `<li>${item.name} - RS ${item.price.toFixed(2)}</li>`).join('')}
                 </ul>
                 <p class="total">Total: RS ${order.total.toFixed(2)}</p>
+                <button id="print-btn">Print</button>
             </div>
         `);
     });
 
-    
+    reportWindow.document.write(`
+            </div>
+            <script>
+                document.getElementById('search-phone-btn').addEventListener('click', function() {
+                    const phoneNumber = document.getElementById('search-phone-input').value.trim();
+
+                    const phoneRegex = /^\\d{10}$/;
+                    if (!phoneRegex.test(phoneNumber)) {
+                        alert("Invalid phone number. Please enter a 10-digit phone number.");
+                        return;
+                    }
+
+                    const matchingOrders = ${JSON.stringify(orders)}.filter(order => order.phoneNumber === phoneNumber);
+
+                    const ordersContainer = document.getElementById('orders-container');
+                    ordersContainer.innerHTML = '';
+
+                    if (matchingOrders.length === 0) {
+                        ordersContainer.innerHTML = '<p>No orders found for this phone number.</p>';
+                        return;
+                    }
+
+                    matchingOrders.forEach(order => {
+                        ordersContainer.innerHTML += \`
+                            <div class="order">
+                                <h3>Order ID: \${order.id}</h3>
+                                <h3>Phone Number: \${order.phoneNumber || 'Not provided'}</h3>
+                                <p><strong>Date:</strong> \${order.timestamp}</p>
+                                <ul class="items">
+                                    \${order.items.map(item => \`<li>\${item.name} - RS \${item.price.toFixed(2)}</li>\`).join('')}
+                                </ul>
+                                <p class="total">Total: RS \${order.total.toFixed(2)}</p>
+                            </div>
+                        \`;
+                    });
+                });
+            </script>
+        </body>
+        </html>
+    `);
+
     reportWindow.document.close();
 }
 
 
 
 
+// function addandremove() {
+//     if (orders.length === 0) {
+//         alert("No orders available to display.");
+//         return;
+//     }
+//     const reportWindow = window.open('', '_blank');
+//     reportWindow.document.write('<h1>Orders Report</h1>');
+//     orders.forEach(order => {
+//         reportWindow.document.write(`
+//             <div>
+//                 <h3>Order ID: ${order.id}</h3>
+//                 <p>Date: ${order.timestamp}</p>
+//                 <ul>
+//                     ${order.items.map(item => `<li>${item.name} - $${item.price.toFixed(2)}</li>`).join('')}
+//                 </ul>
+//                 <p><strong>Total: ${order.total.toFixed(2)}</strong></p>
+//                 <hr>
+//             </div>
+//         `);
+//     });
+// }
 
+document.addEventListener("DOMContentLoaded", function () {
+   
+    const addProductButton = document.getElementById("add-new-product-btn");
+    const appContent = document.querySelector(".app-content");
 
+   
+    let newCategoryContainer;
 
+    
+    addProductButton.addEventListener("click", function () {
+       
+        if (document.getElementById("add-product-form")) return;
+
+        
+        const formContainer = document.createElement("div");
+        formContainer.innerHTML = `
+            <form id="add-product-form" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc;">
+                <h3>Add New Product</h3>
+                <input type="text" id="photo-link" placeholder="Photo Link" required style="display:block; margin: 5px 0; width: 100%;">
+                <input type="text" id="product-name" placeholder="Product Name" required style="display:block; margin: 5px 0; width: 100%;">
+                <input type="number" id="product-price" placeholder="Price" required style="display:block; margin: 5px 0; width: 100%;">
+                <button type="submit" id="submit-product-btn" style="margin-right: 5px;">Add Product</button>
+                <button type="button" id="cancel-form-btn">Cancel</button>
+            </form>
+        `;
+        appContent.appendChild(formContainer);
+
+        const form = document.getElementById("add-product-form");
+
+        
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+        
+            const photoLink = form.querySelector("#photo-link").value;
+            const productName = form.querySelector("#product-name").value;
+            const productPrice = form.querySelector("#product-price").value;
+
+            if (photoLink && productName && productPrice) {
+                
+                if (!newCategoryContainer) {
+                    newCategoryContainer = document.createElement("div");
+                    newCategoryContainer.classList.add("category");
+                    newCategoryContainer.innerHTML = `
+                        <h2>Newly Added Products</h2>
+                        <div class="products" id="new-products"></div>
+                    `;
+                    appContent.appendChild(newCategoryContainer);
+                }
+
+                
+                const productDiv = document.createElement("div");
+                productDiv.classList.add("product");
+                productDiv.innerHTML = `
+                    <img src="${photoLink}" alt="${productName}" style="width: 100px; height: 100px;">
+                    <h4>${productName}</h4>
+                    <p>Rs: ${productPrice}</p>
+                    <button class="order-btn" data-name="${productName}" data-price="${productPrice}">Order</button>
+                `;
+
+                
+                const newProductsContainer = document.getElementById("new-products");
+                newProductsContainer.appendChild(productDiv);
+
+                
+                formContainer.remove();
+            } else {
+                alert("Please fill in all fields!");
+            }
+        });
+
+        
+        form.querySelector("#cancel-form-btn").addEventListener("click", () => {
+            formContainer.remove();
+        });
+    });
+
+    
+    const cartItems = [];
+    const cartElement = document.getElementById("cart-items");
+    const totalElement = document.getElementById("total");
+
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("order-btn")) {
+            const name = event.target.dataset.name;
+            const price = parseFloat(event.target.dataset.price);
+
+            
+            cartItems.push({ name, price });
+            updateCart();
+        }
+    });
+
+    
+    function updateCart() {
+        cartElement.innerHTML = "";
+        let total = 0;
+
+        cartItems.forEach(item => {
+            total += item.price;
+            const li = document.createElement("li");
+            li.textContent = `${item.name} - Rs: ${item.price}`;
+            cartElement.appendChild(li);
+        });
+
+        totalElement.textContent = `Total: Rs: ${total.toFixed(2)}`;
+    }
+
+    
+    document.getElementById("clear-cart-btn").addEventListener("click", function () {
+        cartItems.length = 0; 
+        updateCart();
+    });
+});

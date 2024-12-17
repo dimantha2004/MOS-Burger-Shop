@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <video src="v1.mp4" autoplay muted loop></video>
     <div id="main-content">
         <div class="login-container">
             <h1>MOS BURGER</h1>
@@ -18,6 +19,7 @@
                 <button type="submit">SUBMIT</button>
             </form>
         </div>
+        </body>
 
         <div id="app-content" style="display:none;">
             <header>
@@ -29,6 +31,8 @@
                     <a href="#pasta">Pasta</a>
                     <a href="#chicken">Chicken</a>
                     <a href="#beverages">Beverages</a>
+                    <a href="#cart">Cart</a>
+                    <a href="#add-new-product-btn">Add Product</a>
                 </nav>
             </header>
             <main>
@@ -347,12 +351,18 @@
                                     <button class="order-btn" data-name="Mirinda (330ml)" data-price="850.00">Order</button>
                                 </div>
                             </div>
+                            
+                        </div>
+                        <div class="app-content" id="add-new-product-btn">
+                            <button id="add-new-product-btn">Add New Product</button>
+                        </div>
+
                         </div>
                         
                 </section>
 
                 <section class="cart">
-                    <h3>Your Cart</h3>
+                    <h3 id="cart">Your Cart</h3>
                     <ul id="cart-items"></ul>
                     <p id="total">Total: RS: 0</p>
                     <button id="clear-cart-btn" class="btn btn-warning">Clear Cart</button>
